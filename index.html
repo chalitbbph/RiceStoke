@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rice Stock Management System</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+    <title>Rice Stock Management</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
             --rice-50: #FAF8F3;
             --rice-100: #F5F0E6;
@@ -20,9 +16,6 @@
             --rice-400: #D4A574;
             --rice-600: #B07B3D;
             --earth-600: #2D5016;
-            --earth-100: #E8EDDE;
-            --red-500: #ef4444;
-            --red-100: #fee2e2;
         }
 
         body {
@@ -32,29 +25,9 @@
             color: #333;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1 {
-            color: var(--rice-600);
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 24px;
-            color: var(--rice-600);
-            margin-bottom: 20px;
-        }
-
-        h3 {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 15px;
-        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        h1 { color: var(--rice-600); font-size: 28px; margin-bottom: 10px; }
+        h2 { font-size: 24px; color: var(--rice-600); margin-bottom: 20px; }
 
         .header {
             background: white;
@@ -62,20 +35,10 @@
             border-radius: 12px;
             margin-bottom: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
         }
 
-        .nav-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
+        .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        
         .nav-tab {
             padding: 12px 24px;
             background: white;
@@ -87,23 +50,11 @@
             font-size: 14px;
         }
 
-        .nav-tab:hover {
-            background: var(--rice-100);
-        }
+        .nav-tab:hover { background: var(--rice-100); }
+        .nav-tab.active { background: var(--rice-400); color: white; border-color: var(--rice-400); }
 
-        .nav-tab.active {
-            background: var(--rice-400);
-            color: white;
-            border-color: var(--rice-400);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
         .kpi-grid {
             display: grid;
@@ -120,19 +71,8 @@
             border-left: 4px solid var(--rice-400);
         }
 
-        .kpi-label {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .kpi-value {
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--rice-600);
-            font-family: monospace;
-        }
+        .kpi-label { font-size: 14px; color: #666; margin-bottom: 8px; font-weight: 500; }
+        .kpi-value { font-size: 32px; font-weight: bold; color: var(--rice-600); font-family: monospace; }
 
         .card {
             background: white;
@@ -142,32 +82,19 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #555;
-            font-size: 14px;
-        }
-
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; font-size: 14px; }
+        
         input, select, textarea {
             width: 100%;
             padding: 12px;
             border: 2px solid var(--rice-200);
             border-radius: 8px;
             font-size: 14px;
-            transition: border 0.3s;
             font-family: inherit;
         }
 
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--rice-400);
-        }
+        input:focus, select:focus { outline: none; border-color: var(--rice-400); }
 
         .btn {
             padding: 12px 24px;
@@ -177,85 +104,23 @@
             cursor: pointer;
             transition: all 0.3s;
             font-size: 14px;
-            font-family: inherit;
         }
 
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+        .btn-primary { background: var(--rice-400); color: white; }
+        .btn-primary:hover { background: var(--rice-600); }
+        .btn-secondary { background: var(--earth-600); color: white; }
+        .btn-small { padding: 6px 12px; font-size: 12px; }
+        .btn-outline { background: white; border: 2px solid var(--rice-400); color: var(--rice-600); }
 
-        .btn-primary {
-            background: var(--rice-400);
-            color: white;
-        }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: var(--rice-100); padding: 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--rice-200); }
+        td { padding: 12px; border-bottom: 1px solid var(--rice-100); }
+        tr:hover { background: var(--rice-50); }
 
-        .btn-primary:hover:not(:disabled) {
-            background: var(--rice-600);
-        }
-
-        .btn-secondary {
-            background: var(--earth-600);
-            color: white;
-        }
-
-        .btn-small {
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-
-        .btn-outline {
-            background: white;
-            border: 2px solid var(--rice-400);
-            color: var(--rice-600);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            background: var(--rice-100);
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid var(--rice-200);
-            font-size: 13px;
-        }
-
-        td {
-            padding: 12px;
-            border-bottom: 1px solid var(--rice-100);
-            font-size: 14px;
-        }
-
-        tr:hover {
-            background: var(--rice-50);
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .badge-ok {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .badge-low {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .badge-out {
-            background: #fecaca;
-            color: #7f1d1d;
-        }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .badge-ok { background: #d1fae5; color: #065f46; }
+        .badge-low { background: #fee2e2; color: #991b1b; }
+        .badge-out { background: #fecaca; color: #7f1d1d; }
 
         .modal {
             display: none;
@@ -270,99 +135,24 @@
             justify-content: center;
         }
 
-        .modal.active {
-            display: flex;
-        }
+        .modal.active { display: flex; }
+        .modal-content { background: white; border-radius: 12px; padding: 30px; max-width: 500px; width: 90%; }
+        .modal-header { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid var(--rice-100); }
+        .modal-footer { margin-top: 20px; padding-top: 20px; border-top: 2px solid var(--rice-100); display: flex; gap: 10px; justify-content: flex-end; }
 
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
+        .alert { padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; display: none; }
+        .alert.active { display: block; }
+        .alert-success { background: #d1fae5; color: #065f46; }
+        .alert-error { background: #fee2e2; color: #991b1b; }
 
-        .modal-header {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--rice-100);
-        }
+        .loading { text-align: center; padding: 40px; color: #666; }
+        .empty-state { text-align: center; padding: 60px 20px; color: #666; }
+        .action-buttons { display: flex; gap: 5px; }
+        .flex { display: flex; gap: 10px; }
+        .space-between { justify-content: space-between; }
+        .chart-container { position: relative; height: 300px; margin-top: 20px; }
 
-        .modal-footer {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 2px solid var(--rice-100);
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
-
-        .alert {
-            padding: 12px 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: none;
-            font-size: 14px;
-        }
-
-        .alert.active {
-            display: block;
-        }
-
-        .alert-success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #6ee7b7;
-        }
-
-        .alert-error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fca5a5;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #666;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 5px;
-            flex-wrap: wrap;
-        }
-
-        .flex {
-            display: flex;
-            gap: 10px;
-        }
-
-        .space-between {
-            justify-content: space-between;
-        }
-
-        .chart-container {
-            position: relative;
-            height: 300px;
-            margin-top: 20px;
-        }
-
-        .pack-presets {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
-
+        .pack-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
         .pack-preset {
             padding: 6px 12px;
             background: var(--rice-100);
@@ -370,129 +160,67 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 12px;
-            transition: all 0.3s;
         }
-
-        .pack-preset:hover {
-            background: var(--rice-400);
-            color: white;
-            border-color: var(--rice-400);
-        }
+        .pack-preset:hover { background: var(--rice-400); color: white; }
 
         @media (max-width: 768px) {
-            .nav-tabs {
-                overflow-x: auto;
-                flex-wrap: nowrap;
-            }
-            
-            .kpi-grid {
-                grid-template-columns: 1fr;
-            }
+            .kpi-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
-            <div>
-                <h1 style="margin-bottom: 5px;">🌾 Rice Stock Management</h1>
-                <p style="color: #666; font-size: 14px;">Real-time Inventory System</p>
-            </div>
+            <h1>🌾 Rice Stock Management</h1>
+            <p style="color: #666;">Real-time Inventory System</p>
         </div>
 
-        <div class="alert" id="dashboardAlert"></div>
+        <div class="alert" id="alert"></div>
 
-        <!-- Navigation Tabs -->
         <div class="nav-tabs">
-            <button class="nav-tab active" onclick="switchTab('overview')">📊 Dashboard</button>
-            <button class="nav-tab" onclick="switchTab('products')">📦 Add Product</button>
-            <button class="nav-tab" onclick="switchTab('transactions')">🔄 Transactions</button>
-            <button class="nav-tab" onclick="switchTab('sales')">📈 Sales</button>
+            <button class="nav-tab active" onclick="switchTab(event, 'overview')">📊 Dashboard</button>
+            <button class="nav-tab" onclick="switchTab(event, 'products')">📦 Add Product</button>
+            <button class="nav-tab" onclick="switchTab(event, 'transactions')">🔄 Transactions</button>
+            <button class="nav-tab" onclick="switchTab(event, 'sales')">📈 Sales</button>
         </div>
 
-        <!-- Overview Tab -->
         <div id="overviewTab" class="tab-content active">
             <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-label">📦 Total Stock</div>
-                    <div class="kpi-value" id="totalStock">0 kg</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">🏷️ Active Products</div>
-                    <div class="kpi-value" id="productCount">0</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">⚠️ Low Stock</div>
-                    <div class="kpi-value" id="lowStockCount">0</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-label">📉 7-Day Sales</div>
-                    <div class="kpi-value" id="sales7d">0 kg</div>
-                </div>
+                <div class="kpi-card"><div class="kpi-label">📦 Total Stock</div><div class="kpi-value" id="totalStock">0 kg</div></div>
+                <div class="kpi-card"><div class="kpi-label">🏷️ Products</div><div class="kpi-value" id="productCount">0</div></div>
+                <div class="kpi-card"><div class="kpi-label">⚠️ Low Stock</div><div class="kpi-value" id="lowStockCount">0</div></div>
+                <div class="kpi-card"><div class="kpi-label">📉 7-Day Sales</div><div class="kpi-value" id="sales7d">0 kg</div></div>
             </div>
 
             <div class="card">
-                <div class="flex space-between" style="align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+                <div class="flex space-between" style="align-items: center; margin-bottom: 20px;">
                     <h2 style="margin: 0;">Inventory</h2>
                     <button class="btn btn-primary" onclick="showTransactionModal()">➕ New Transaction</button>
                 </div>
-
-                <div style="margin-bottom: 20px;">
-                    <input type="text" id="searchInput" placeholder="🔍 Search..." 
-                           onkeyup="filterProducts()" style="padding: 12px;">
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>SKU</th>
-                            <th>Name</th>
-                            <th>Pack (kg)</th>
-                            <th>On Hand (kg)</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="productsTable">
-                        <tr>
-                            <td colspan="6" class="loading">⏳ Loading...</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <input type="text" id="searchInput" placeholder="🔍 Search..." onkeyup="filterProducts()" style="margin-bottom: 20px; padding: 12px;">
+                <table><thead><tr><th>SKU</th><th>Name</th><th>Pack (kg)</th><th>On Hand (kg)</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="productsTable"><tr><td colspan="6" class="loading">⏳ Loading...</td></tr></tbody></table>
             </div>
         </div>
 
-        <!-- Products Tab -->
         <div id="productsTab" class="tab-content">
             <div class="card">
                 <h2>📦 Add New Product</h2>
-                <form id="productForm" onsubmit="handleAddProduct(event)">
+                <form onsubmit="handleAddProduct(event)">
                     <div class="flex">
-                        <div class="form-group" style="flex: 1;">
-                            <label>SKU *</label>
-                            <input type="text" id="productSKU" required placeholder="RICE-001">
-                        </div>
-                        <div class="form-group" style="flex: 2;">
-                            <label>Name *</label>
-                            <input type="text" id="productName" required placeholder="Jasmine Rice">
-                        </div>
+                        <div class="form-group" style="flex: 1;"><label>SKU *</label><input type="text" id="productSKU" required placeholder="RICE-001"></div>
+                        <div class="form-group" style="flex: 2;"><label>Name *</label><input type="text" id="productName" required placeholder="Jasmine Rice"></div>
                     </div>
-
-                    <div class="form-group">
-                        <label>Category *</label>
+                    <div class="form-group"><label>Category *</label>
                         <select id="productCategory" required>
                             <option value="">Select...</option>
                             <option value="Jasmine">Jasmine</option>
                             <option value="White">White</option>
                             <option value="Brown">Brown</option>
                             <option value="Sticky">Sticky</option>
-                            <option value="Specialty">Specialty</option>
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label>Pack Size (kg) *</label>
+                    <div class="form-group"><label>Pack Size (kg) *</label>
                         <input type="number" id="productPackSize" step="0.1" required placeholder="25">
                         <div class="pack-presets">
                             <span class="pack-preset" onclick="setPackSize(0.5)">0.5</span>
@@ -504,80 +232,38 @@
                             <span class="pack-preset" onclick="setPackSize(49)">49</span>
                         </div>
                     </div>
-
                     <button type="submit" class="btn btn-primary">✅ Add Product</button>
                 </form>
             </div>
         </div>
 
-        <!-- Transactions Tab -->
         <div id="transactionsTab" class="tab-content">
-            <div class="card">
-                <h2>🔄 Transactions</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Type</th>
-                            <th>Product</th>
-                            <th>Qty (kg)</th>
-                            <th>Ref</th>
-                        </tr>
-                    </thead>
-                    <tbody id="transactionsTable">
-                        <tr><td colspan="5" class="loading">⏳ Loading...</td></tr>
-                    </tbody>
-                </table>
+            <div class="card"><h2>🔄 Transactions</h2>
+                <table><thead><tr><th>Date</th><th>Type</th><th>Product</th><th>Qty (kg)</th><th>Ref</th></tr></thead>
+                <tbody id="transactionsTable"><tr><td colspan="5" class="loading">⏳ Loading...</td></tr></tbody></table>
             </div>
         </div>
 
-        <!-- Sales Tab -->
         <div id="salesTab" class="tab-content">
-            <div class="card">
-                <h2>📈 Sales (Last 30 Days)</h2>
-                <div class="chart-container">
-                    <canvas id="salesChart"></canvas>
-                </div>
-            </div>
+            <div class="card"><h2>📈 Sales (Last 30 Days)</h2><div class="chart-container"><canvas id="salesChart"></canvas></div></div>
         </div>
     </div>
 
-    <!-- Transaction Modal -->
     <div id="transactionModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3>New Transaction</h3>
-            </div>
-            <form id="transactionForm" onsubmit="handleTransaction(event)">
-                <div class="form-group">
-                    <label>Type *</label>
+            <div class="modal-header"><h3>New Transaction</h3></div>
+            <form onsubmit="handleTransaction(event)">
+                <div class="form-group"><label>Type *</label>
                     <select id="txnType" required>
                         <option value="IN">📥 IN (Receive)</option>
                         <option value="OUT">📤 OUT (Sale)</option>
                         <option value="ADJUST">⚖️ Adjust</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label>Product *</label>
-                    <select id="txnProduct" required onchange="updateHelper()">
-                        <option value="">Select...</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Quantity (kg) *</label>
-                    <input type="number" id="txnQty" step="0.01" required min="0.01" onkeyup="updateHelper()">
-                    <p style="font-size: 12px; color: #666; margin-top: 5px;">
-                        💡 <span id="helper">Enter quantity</span>
-                    </p>
-                </div>
-
-                <div class="form-group">
-                    <label>Reference</label>
-                    <input type="text" id="txnRef" placeholder="PO-001">
-                </div>
-
+                <div class="form-group"><label>Product *</label><select id="txnProduct" required onchange="updateHelper()"><option value="">Select...</option></select></div>
+                <div class="form-group"><label>Quantity (kg) *</label><input type="number" id="txnQty" step="0.01" required min="0.01" onkeyup="updateHelper()">
+                <p style="font-size: 12px; color: #666; margin-top: 5px;">💡 <span id="helper">Enter quantity</span></p></div>
+                <div class="form-group"><label>Reference</label><input type="text" id="txnRef" placeholder="PO-001"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
                     <button type="submit" class="btn btn-primary">✅ Submit</button>
@@ -587,14 +273,14 @@
     </div>
 
     <script>
-        const SUPABASE_URL = 'https://sopkquvohihiwcpqntqu.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvcGtxdXZvaGloaXdjcHFudHF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE1ODMwMjEsImV4cCI6MjA4NzE1OTAyMX0.5y3LqwqUdswi11O_fCJUZXjg4bIecEjXBFzymu_Gj5k';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabase = window.supabase.createClient(
+            'https://sopkquvohihiwcpqntqu.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvcGtxdXZvaGloaXdjcHFudHF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE1ODMwMjEsImV4cCI6MjA4NzE1OTAyMX0.5y3LqwqUdswi11O_fCJUZXjg4bIecEjXBFzymu_Gj5k'
+        );
         const ORG_ID = '00000000-0000-0000-0000-000000000001';
         let allProducts = [];
         let chart = null;
 
-        // Load data on start
         loadData();
 
         async function loadData() {
@@ -610,24 +296,15 @@
                     document.getElementById('lowStockCount').textContent = data.low_stock_count || 0;
                     document.getElementById('sales7d').textContent = `${parseFloat(data.sales_7d_kg || 0).toFixed(2)} kg`;
                 }
-            } catch (err) {
-                console.error('KPI error:', err);
-            }
+            } catch (err) { console.error('KPI error:', err); }
         }
 
         async function loadProducts() {
             try {
-                const { data } = await supabase
-                    .from('inventory_on_hand')
-                    .select('*')
-                    .eq('org_id', ORG_ID)
-                    .order('sku');
-
+                const { data } = await supabase.from('inventory_on_hand').select('*').eq('org_id', ORG_ID).order('sku');
                 allProducts = data || [];
                 displayProducts(allProducts);
-            } catch (err) {
-                console.error('Products error:', err);
-            }
+            } catch (err) { console.error('Products error:', err); }
         }
 
         function displayProducts(products) {
@@ -636,61 +313,53 @@
                 tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No products. Add one!</td></tr>';
                 return;
             }
-
             tbody.innerHTML = products.map(p => {
                 const status = p.on_hand_kg === 0 ? { label: '❌ OUT', class: 'out' } :
                               (p.reorder_point_kg > 0 && p.on_hand_kg < p.reorder_point_kg) ? { label: '⚠️ LOW', class: 'low' } :
                               { label: '✅ OK', class: 'ok' };
-                
                 return `<tr>
                     <td><strong>${p.sku}</strong></td>
                     <td>${p.name}</td>
                     <td>${parseFloat(p.pack_size_kg).toFixed(2)}</td>
                     <td><strong>${parseFloat(p.on_hand_kg).toFixed(2)}</strong></td>
                     <td><span class="badge badge-${status.class}">${status.label}</span></td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="btn btn-secondary btn-small" onclick="quickTxn('${p.product_id}','IN')">IN</button>
-                            <button class="btn btn-primary btn-small" onclick="quickTxn('${p.product_id}','OUT')" ${p.on_hand_kg === 0 ? 'disabled' : ''}>OUT</button>
-                        </div>
-                    </td>
+                    <td><div class="action-buttons">
+                        <button class="btn btn-secondary btn-small" onclick="quickTxn('${p.product_id}','IN')">IN</button>
+                        <button class="btn btn-primary btn-small" onclick="quickTxn('${p.product_id}','OUT')" ${p.on_hand_kg === 0 ? 'disabled' : ''}>OUT</button>
+                    </div></td>
                 </tr>`;
             }).join('');
         }
 
         function filterProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = allProducts.filter(p => 
-                p.sku.toLowerCase().includes(query) || p.name.toLowerCase().includes(query)
-            );
+            const filtered = allProducts.filter(p => p.sku.toLowerCase().includes(query) || p.name.toLowerCase().includes(query));
             displayProducts(filtered);
         }
 
         async function handleAddProduct(event) {
             event.preventDefault();
             try {
-                const { data, error } = await supabase.from('products').insert({
+                const { error } = await supabase.from('products').insert({
                     org_id: ORG_ID,
                     sku: document.getElementById('productSKU').value.trim(),
                     name: document.getElementById('productName').value.trim(),
                     category: document.getElementById('productCategory').value,
                     pack_size_kg: parseFloat(document.getElementById('productPackSize').value),
                     reorder_point_kg: 0
-                }).select();
-
+                });
                 if (error) throw error;
                 showAlert('✅ Product added!', 'success');
-                document.getElementById('productForm').reset();
+                document.getElementById('productSKU').value = '';
+                document.getElementById('productName').value = '';
+                document.getElementById('productCategory').value = '';
+                document.getElementById('productPackSize').value = '';
                 await loadData();
-                switchTab('overview');
-            } catch (err) {
-                showAlert('❌ ' + err.message, 'error');
-            }
+                document.querySelector('[onclick*="overview"]').click();
+            } catch (err) { showAlert('❌ ' + err.message, 'error'); }
         }
 
-        function setPackSize(size) {
-            document.getElementById('productPackSize').value = size;
-        }
+        function setPackSize(size) { document.getElementById('productPackSize').value = size; }
 
         function showTransactionModal() {
             loadProductsDropdown();
@@ -699,7 +368,10 @@
 
         function closeModal() {
             document.getElementById('transactionModal').classList.remove('active');
-            document.getElementById('transactionForm').reset();
+            document.getElementById('txnType').value = 'IN';
+            document.getElementById('txnProduct').value = '';
+            document.getElementById('txnQty').value = '';
+            document.getElementById('txnRef').value = '';
         }
 
         function quickTxn(id, type) {
@@ -711,11 +383,7 @@
         function loadProductsDropdown(selectedId = null) {
             const select = document.getElementById('txnProduct');
             select.innerHTML = '<option value="">Select...</option>' + 
-                allProducts.map(p => 
-                    `<option value="${p.product_id}" data-pack="${p.pack_size_kg}" ${p.product_id === selectedId ? 'selected' : ''}>
-                        ${p.sku} - ${p.name}
-                    </option>`
-                ).join('');
+                allProducts.map(p => `<option value="${p.product_id}" data-pack="${p.pack_size_kg}" ${p.product_id === selectedId ? 'selected' : ''}>${p.sku} - ${p.name}</option>`).join('');
         }
 
         function updateHelper() {
@@ -723,12 +391,7 @@
             const option = select.options[select.selectedIndex];
             const pack = parseFloat(option.dataset.pack || 0);
             const qty = parseFloat(document.getElementById('txnQty').value || 0);
-            
-            if (pack > 0 && qty > 0) {
-                document.getElementById('helper').textContent = `≈ ${(qty / pack).toFixed(2)} bags × ${pack} kg`;
-            } else {
-                document.getElementById('helper').textContent = 'Enter quantity';
-            }
+            document.getElementById('helper').textContent = (pack > 0 && qty > 0) ? `≈ ${(qty / pack).toFixed(2)} bags × ${pack} kg` : 'Enter quantity';
         }
 
         async function handleTransaction(event) {
@@ -742,33 +405,22 @@
                     p_ref: document.getElementById('txnRef').value.trim() || null,
                     p_note: null
                 });
-
                 if (error) throw error;
                 if (data && !data.success) throw new Error(data.error);
-
                 showAlert('✅ Transaction completed!', 'success');
                 closeModal();
                 await loadData();
-            } catch (err) {
-                showAlert('❌ ' + err.message, 'error');
-            }
+            } catch (err) { showAlert('❌ ' + err.message, 'error'); }
         }
 
         async function loadTransactions() {
             try {
-                const { data } = await supabase
-                    .from('inventory_txn')
-                    .select('*, products(sku, name)')
-                    .eq('org_id', ORG_ID)
-                    .order('created_at', { ascending: false })
-                    .limit(50);
-
+                const { data } = await supabase.from('inventory_txn').select('*, products(sku, name)').eq('org_id', ORG_ID).order('created_at', { ascending: false }).limit(50);
                 const tbody = document.getElementById('transactionsTable');
                 if (!data || data.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No transactions</td></tr>';
                     return;
                 }
-
                 tbody.innerHTML = data.map(t => `<tr>
                     <td>${new Date(t.created_at).toLocaleString()}</td>
                     <td>${t.type}</td>
@@ -776,31 +428,20 @@
                     <td><strong>${parseFloat(t.qty_kg).toFixed(2)}</strong></td>
                     <td>${t.ref || '-'}</td>
                 </tr>`).join('');
-            } catch (err) {
-                console.error('Txn error:', err);
-            }
+            } catch (err) { console.error('Txn error:', err); }
         }
 
         async function loadSales() {
             try {
-                const { data } = await supabase
-                    .from('inventory_txn')
-                    .select('created_at, qty_kg')
-                    .eq('org_id', ORG_ID)
-                    .eq('type', 'OUT')
-                    .gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString());
-
+                const { data } = await supabase.from('inventory_txn').select('created_at, qty_kg').eq('org_id', ORG_ID).eq('type', 'OUT').gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString());
                 if (!data) return;
-
                 const byDate = {};
                 data.forEach(t => {
                     const date = new Date(t.created_at).toLocaleDateString();
                     byDate[date] = (byDate[date] || 0) + parseFloat(t.qty_kg);
                 });
-
                 const ctx = document.getElementById('salesChart');
                 if (chart) chart.destroy();
-
                 chart = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -814,30 +455,22 @@
                             fill: true
                         }]
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: { y: { beginAtZero: true } }
-                    }
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
                 });
-            } catch (err) {
-                console.error('Sales error:', err);
-            }
+            } catch (err) { console.error('Sales error:', err); }
         }
 
-        function switchTab(name) {
+        function switchTab(event, name) {
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
             event.target.classList.add('active');
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.getElementById(name + 'Tab').classList.add('active');
-            
             if (name === 'sales') loadSales();
             if (name === 'transactions') loadTransactions();
         }
 
         function showAlert(msg, type) {
-            const alert = document.getElementById('dashboardAlert');
+            const alert = document.getElementById('alert');
             alert.className = `alert alert-${type} active`;
             alert.textContent = msg;
             setTimeout(() => alert.classList.remove('active'), 5000);
