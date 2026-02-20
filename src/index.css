@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rice-50: #FAF8F3;
+  --color-rice-100: #F5F0E6;
+  --color-rice-200: #EBE0CD;
+  --color-rice-400: #D4A574;
+  --color-rice-600: #B07B3D;
+  --color-earth-600: #2D5016;
+  --color-earth-100: #E8EDDE;
+}
+
+@layer base {
+  body {
+    @apply bg-linear-to-br from-rice-50 to-rice-100 min-h-screen text-gray-800 antialiased;
+  }
+}
