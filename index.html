@@ -38,72 +38,6 @@
             padding: 20px;
         }
 
-        /* Auth Screen */
-        .auth-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .auth-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            padding: 40px;
-            width: 100%;
-            max-width: 420px;
-            border: 2px solid var(--rice-200);
-        }
-
-        .auth-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .auth-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--rice-100);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 30px;
-        }
-
-        .demo-box {
-            background: linear-gradient(135deg, #d1fae5 0%, var(--earth-100) 100%);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            border: 2px solid var(--earth-600);
-        }
-
-        .demo-box h4 {
-            color: var(--earth-600);
-            font-size: 16px;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .demo-credentials {
-            background: white;
-            padding: 12px;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 14px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .demo-credentials strong {
-            color: var(--earth-600);
-        }
-
         h1 {
             color: var(--rice-600);
             font-size: 28px;
@@ -120,11 +54,6 @@
             font-size: 18px;
             color: #555;
             margin-bottom: 15px;
-        }
-
-        /* Dashboard Layout */
-        .dashboard {
-            display: none;
         }
 
         .header {
@@ -176,7 +105,6 @@
             display: block;
         }
 
-        /* KPI Cards */
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -206,7 +134,6 @@
             font-family: monospace;
         }
 
-        /* Cards */
         .card {
             background: white;
             border-radius: 12px;
@@ -215,7 +142,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* Forms */
         .form-group {
             margin-bottom: 20px;
         }
@@ -243,7 +169,6 @@
             border-color: var(--rice-400);
         }
 
-        /* Buttons */
         .btn {
             padding: 12px 24px;
             border: none;
@@ -274,19 +199,6 @@
             color: white;
         }
 
-        .btn-secondary:hover:not(:disabled) {
-            opacity: 0.9;
-        }
-
-        .btn-danger {
-            background: var(--red-500);
-            color: white;
-        }
-
-        .btn-danger:hover:not(:disabled) {
-            opacity: 0.9;
-        }
-
         .btn-small {
             padding: 6px 12px;
             font-size: 12px;
@@ -296,15 +208,6 @@
             background: white;
             border: 2px solid var(--rice-400);
             color: var(--rice-600);
-        }
-
-        .btn-outline:hover:not(:disabled) {
-            background: var(--rice-100);
-        }
-
-        /* Table */
-        .table-container {
-            overflow-x: auto;
         }
 
         table {
@@ -331,16 +234,6 @@
             background: var(--rice-50);
         }
 
-        /* Search */
-        .search-box {
-            margin-bottom: 20px;
-        }
-
-        .search-box input {
-            padding-left: 40px;
-        }
-
-        /* Badge */
         .badge {
             display: inline-block;
             padding: 4px 12px;
@@ -364,17 +257,6 @@
             color: #7f1d1d;
         }
 
-        .badge-in {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .badge-adjust {
-            background: #e0e7ff;
-            color: #3730a3;
-        }
-
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -417,7 +299,6 @@
             justify-content: flex-end;
         }
 
-        /* Alert */
         .alert {
             padding: 12px 20px;
             border-radius: 8px;
@@ -442,43 +323,22 @@
             border: 1px solid #fca5a5;
         }
 
-        /* Loading */
         .loading {
             text-align: center;
             padding: 40px;
             color: #666;
         }
 
-        /* Empty State */
         .empty-state {
             text-align: center;
             padding: 60px 20px;
             color: #666;
         }
 
-        .empty-state-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
-
-        /* Action Buttons */
         .action-buttons {
             display: flex;
             gap: 5px;
             flex-wrap: wrap;
-        }
-
-        /* Utilities */
-        .hidden {
-            display: none !important;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-2 {
-            margin-top: 10px;
         }
 
         .flex {
@@ -496,7 +356,6 @@
             margin-top: 20px;
         }
 
-        /* Pack Size Presets */
         .pack-presets {
             display: flex;
             gap: 8px;
@@ -529,253 +388,155 @@
             .kpi-grid {
                 grid-template-columns: 1fr;
             }
-
-            .auth-card {
-                padding: 30px 20px;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: stretch;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Auth Screen -->
-    <div id="authScreen" class="auth-container">
-        <div class="auth-card">
-            <div class="auth-header">
-                <div class="auth-icon">🌾</div>
-                <h1>Rice Stock Manager</h1>
-                <p style="color: #666; font-size: 14px;">Professional Inventory Management</p>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <h1 style="margin-bottom: 5px;">🌾 Rice Stock Management</h1>
+                <p style="color: #666; font-size: 14px;">Real-time Inventory System</p>
             </div>
-
-            <div class="demo-box">
-                <h4>🔑 Demo Login Credentials</h4>
-                <div class="demo-credentials">
-                    <span><strong>Username:</strong></span>
-                    <span>admin123</span>
-                </div>
-                <div class="demo-credentials">
-                    <span><strong>Password:</strong></span>
-                    <span>123</span>
-                </div>
-            </div>
-
-            <div class="alert" id="authAlert"></div>
-
-            <form onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" id="loginUsername" placeholder="admin123" required value="admin123">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="loginPassword" placeholder="123" required value="123">
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    🚀 Sign In
-                </button>
-            </form>
         </div>
-    </div>
 
-    <!-- Dashboard -->
-    <div id="dashboardScreen" class="dashboard">
-        <div class="container">
-            <!-- Header -->
-            <div class="header">
-                <div>
-                    <h1 style="margin-bottom: 5px;">🌾 Rice Stock Management</h1>
-                    <p style="color: #666; font-size: 14px;">Logged in as: <strong>admin123</strong></p>
+        <div class="alert" id="dashboardAlert"></div>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('overview')">📊 Dashboard</button>
+            <button class="nav-tab" onclick="switchTab('products')">📦 Add Product</button>
+            <button class="nav-tab" onclick="switchTab('transactions')">🔄 Transactions</button>
+            <button class="nav-tab" onclick="switchTab('sales')">📈 Sales</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overviewTab" class="tab-content active">
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">📦 Total Stock</div>
+                    <div class="kpi-value" id="totalStock">0 kg</div>
                 </div>
-                <button class="btn btn-danger" onclick="handleLogout()">🚪 Sign Out</button>
-            </div>
-
-            <div class="alert" id="dashboardAlert"></div>
-
-            <!-- Navigation Tabs -->
-            <div class="nav-tabs">
-                <button class="nav-tab active" onclick="switchTab('overview')">📊 Dashboard</button>
-                <button class="nav-tab" onclick="switchTab('products')">📦 Add Product</button>
-                <button class="nav-tab" onclick="switchTab('transactions')">🔄 Transactions</button>
-                <button class="nav-tab" onclick="switchTab('sales')">📈 Sales Analytics</button>
-            </div>
-
-            <!-- Overview Tab -->
-            <div id="overviewTab" class="tab-content active">
-                <div class="kpi-grid" id="kpiCards">
-                    <div class="kpi-card">
-                        <div class="kpi-label">📦 Total Stock</div>
-                        <div class="kpi-value" id="totalStock">0 kg</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-label">🏷️ Active Products</div>
-                        <div class="kpi-value" id="productCount">0</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-label">⚠️ Low Stock Alerts</div>
-                        <div class="kpi-value" id="lowStockCount">0</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-label">📉 7-Day Sales</div>
-                        <div class="kpi-value" id="sales7d">0 kg</div>
-                    </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">🏷️ Active Products</div>
+                    <div class="kpi-value" id="productCount">0</div>
                 </div>
-
-                <div class="card">
-                    <div class="flex space-between" style="align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
-                        <h2 style="margin: 0;">Inventory Overview</h2>
-                        <button class="btn btn-primary" onclick="showTransactionModal()">➕ New Transaction</button>
-                    </div>
-
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="🔍 Search by SKU, name, or barcode..." 
-                               onkeyup="filterProducts()">
-                    </div>
-
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>SKU</th>
-                                    <th>Product Name</th>
-                                    <th>Pack (kg)</th>
-                                    <th>On Hand (kg)</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="productsTable">
-                                <tr>
-                                    <td colspan="6" class="loading">⏳ Loading products...</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">⚠️ Low Stock</div>
+                    <div class="kpi-value" id="lowStockCount">0</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">📉 7-Day Sales</div>
+                    <div class="kpi-value" id="sales7d">0 kg</div>
                 </div>
             </div>
 
-            <!-- Products Tab -->
-            <div id="productsTab" class="tab-content">
-                <div class="card">
-                    <h2>📦 Add New Product</h2>
-                    <form id="productForm" onsubmit="handleAddProduct(event)">
-                        <div class="flex">
-                            <div class="form-group" style="flex: 1;">
-                                <label>SKU *</label>
-                                <input type="text" id="productSKU" required placeholder="RICE-001">
-                            </div>
-                            <div class="form-group" style="flex: 2;">
-                                <label>Product Name *</label>
-                                <input type="text" id="productName" required placeholder="Jasmine Rice Premium">
-                            </div>
+            <div class="card">
+                <div class="flex space-between" style="align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+                    <h2 style="margin: 0;">Inventory</h2>
+                    <button class="btn btn-primary" onclick="showTransactionModal()">➕ New Transaction</button>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <input type="text" id="searchInput" placeholder="🔍 Search..." 
+                           onkeyup="filterProducts()" style="padding: 12px;">
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SKU</th>
+                            <th>Name</th>
+                            <th>Pack (kg)</th>
+                            <th>On Hand (kg)</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTable">
+                        <tr>
+                            <td colspan="6" class="loading">⏳ Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Products Tab -->
+        <div id="productsTab" class="tab-content">
+            <div class="card">
+                <h2>📦 Add New Product</h2>
+                <form id="productForm" onsubmit="handleAddProduct(event)">
+                    <div class="flex">
+                        <div class="form-group" style="flex: 1;">
+                            <label>SKU *</label>
+                            <input type="text" id="productSKU" required placeholder="RICE-001">
                         </div>
-
-                        <div class="form-group">
-                            <label>Thai Name (Optional)</label>
-                            <input type="text" id="productNameTH" placeholder="ข้าวหอมมะลิ">
+                        <div class="form-group" style="flex: 2;">
+                            <label>Name *</label>
+                            <input type="text" id="productName" required placeholder="Jasmine Rice">
                         </div>
+                    </div>
 
-                        <div class="flex">
-                            <div class="form-group" style="flex: 1;">
-                                <label>Category *</label>
-                                <select id="productCategory" required>
-                                    <option value="">Select...</option>
-                                    <option value="Jasmine">Jasmine (หอมมะลิ)</option>
-                                    <option value="White">White (ขาว)</option>
-                                    <option value="Brown">Brown (กล้อง)</option>
-                                    <option value="Sticky">Sticky (เหนียว)</option>
-                                    <option value="Specialty">Specialty (พิเศษ)</option>
-                                    <option value="Parboiled">Parboiled (สุก)</option>
-                                </select>
-                            </div>
-                            <div class="form-group" style="flex: 1;">
-                                <label>Pack Size (kg) *</label>
-                                <input type="number" id="productPackSize" step="0.1" required placeholder="25">
-                                <div class="pack-presets">
-                                    <span class="pack-preset" onclick="setPackSize(0.5)">0.5</span>
-                                    <span class="pack-preset" onclick="setPackSize(1)">1</span>
-                                    <span class="pack-preset" onclick="setPackSize(2)">2</span>
-                                    <span class="pack-preset" onclick="setPackSize(5)">5</span>
-                                    <span class="pack-preset" onclick="setPackSize(10)">10</span>
-                                    <span class="pack-preset" onclick="setPackSize(25)">25</span>
-                                    <span class="pack-preset" onclick="setPackSize(49)">49</span>
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="productCategory" required>
+                            <option value="">Select...</option>
+                            <option value="Jasmine">Jasmine</option>
+                            <option value="White">White</option>
+                            <option value="Brown">Brown</option>
+                            <option value="Sticky">Sticky</option>
+                            <option value="Specialty">Specialty</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pack Size (kg) *</label>
+                        <input type="number" id="productPackSize" step="0.1" required placeholder="25">
+                        <div class="pack-presets">
+                            <span class="pack-preset" onclick="setPackSize(0.5)">0.5</span>
+                            <span class="pack-preset" onclick="setPackSize(1)">1</span>
+                            <span class="pack-preset" onclick="setPackSize(2)">2</span>
+                            <span class="pack-preset" onclick="setPackSize(5)">5</span>
+                            <span class="pack-preset" onclick="setPackSize(10)">10</span>
+                            <span class="pack-preset" onclick="setPackSize(25)">25</span>
+                            <span class="pack-preset" onclick="setPackSize(49)">49</span>
                         </div>
+                    </div>
 
-                        <div class="flex">
-                            <div class="form-group" style="flex: 1;">
-                                <label>Barcode (Optional)</label>
-                                <input type="text" id="productBarcode" placeholder="8851234567890">
-                            </div>
-                            <div class="form-group" style="flex: 1;">
-                                <label>Reorder Point (kg)</label>
-                                <input type="number" id="productReorder" value="100" min="0">
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">✅ Add Product</button>
-                    </form>
-                </div>
+                    <button type="submit" class="btn btn-primary">✅ Add Product</button>
+                </form>
             </div>
+        </div>
 
-            <!-- Transactions Tab -->
-            <div id="transactionsTab" class="tab-content">
-                <div class="card">
-                    <h2>🔄 Transaction History</h2>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Date & Time</th>
-                                    <th>Type</th>
-                                    <th>Product</th>
-                                    <th>Quantity (kg)</th>
-                                    <th>Reference</th>
-                                    <th>Note</th>
-                                </tr>
-                            </thead>
-                            <tbody id="transactionsTable">
-                                <tr>
-                                    <td colspan="6" class="loading">⏳ Loading transactions...</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <!-- Transactions Tab -->
+        <div id="transactionsTab" class="tab-content">
+            <div class="card">
+                <h2>🔄 Transactions</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Product</th>
+                            <th>Qty (kg)</th>
+                            <th>Ref</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsTable">
+                        <tr><td colspan="5" class="loading">⏳ Loading...</td></tr>
+                    </tbody>
+                </table>
             </div>
+        </div>
 
-            <!-- Sales Tab -->
-            <div id="salesTab" class="tab-content">
-                <div class="card">
-                    <h2>📈 Sales Analytics (Last 30 Days)</h2>
-                    <div class="chart-container">
-                        <canvas id="salesChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>🏆 Top 10 Selling Products</h2>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Rank</th>
-                                    <th>SKU</th>
-                                    <th>Product Name</th>
-                                    <th>Total Sales (kg)</th>
-                                </tr>
-                            </thead>
-                            <tbody id="topProductsTable">
-                                <tr>
-                                    <td colspan="4" class="loading">⏳ Loading...</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <!-- Sales Tab -->
+        <div id="salesTab" class="tab-content">
+            <div class="card">
+                <h2>📈 Sales (Last 30 Days)</h2>
+                <div class="chart-container">
+                    <canvas id="salesChart"></canvas>
                 </div>
             </div>
         </div>
@@ -785,45 +546,40 @@
     <div id="transactionModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="modalTitle">New Transaction</h3>
+                <h3>New Transaction</h3>
             </div>
             <form id="transactionForm" onsubmit="handleTransaction(event)">
                 <div class="form-group">
-                    <label>Transaction Type *</label>
-                    <select id="txnType" required onchange="updateTxnForm()">
-                        <option value="IN">📥 Stock IN (Receive)</option>
-                        <option value="OUT">📤 Stock OUT (Sale)</option>
-                        <option value="ADJUST">⚖️ Adjustment</option>
+                    <label>Type *</label>
+                    <select id="txnType" required>
+                        <option value="IN">📥 IN (Receive)</option>
+                        <option value="OUT">📤 OUT (Sale)</option>
+                        <option value="ADJUST">⚖️ Adjust</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>Product *</label>
-                    <select id="txnProduct" required onchange="updateBagsHelper()">
-                        <option value="">Select product...</option>
+                    <select id="txnProduct" required onchange="updateHelper()">
+                        <option value="">Select...</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>Quantity (kg) *</label>
-                    <input type="number" id="txnQty" step="0.01" required min="0.01" onkeyup="updateBagsHelper()">
+                    <input type="number" id="txnQty" step="0.01" required min="0.01" onkeyup="updateHelper()">
                     <p style="font-size: 12px; color: #666; margin-top: 5px;">
-                        💡 Helper: <span id="bagsHelper">Enter quantity above</span>
+                        💡 <span id="helper">Enter quantity</span>
                     </p>
                 </div>
 
                 <div class="form-group">
-                    <label>Reference (Optional)</label>
-                    <input type="text" id="txnRef" placeholder="PO-001, Invoice #123">
-                </div>
-
-                <div class="form-group">
-                    <label>Note (Optional)</label>
-                    <textarea id="txnNote" rows="3" placeholder="Additional notes..."></textarea>
+                    <label>Reference</label>
+                    <input type="text" id="txnRef" placeholder="PO-001">
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline" onclick="closeTransactionModal()">Cancel</button>
+                    <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
                     <button type="submit" class="btn btn-primary">✅ Submit</button>
                 </div>
             </form>
@@ -831,256 +587,104 @@
     </div>
 
     <script>
-        // ====================================
-        // Supabase Configuration
-        // ====================================
         const SUPABASE_URL = 'https://sopkquvohihiwcpqntqu.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvcGtxdXZvaGloaXdjcHFudHF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE1ODMwMjEsImV4cCI6MjA4NzE1OTAyMX0.5y3LqwqUdswi11O_fCJUZXjg4bIecEjXBFzymu_Gj5k';
-
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        // Fixed admin credentials
-        const ADMIN_USERNAME = 'admin123';
-        const ADMIN_PASSWORD = '123';
-
-        let currentUser = null;
-        let currentOrgId = '00000000-0000-0000-0000-000000000001'; // Fixed org ID
+        const ORG_ID = '00000000-0000-0000-0000-000000000001';
         let allProducts = [];
-        let salesChart = null;
+        let chart = null;
 
-        // ====================================
-        // Initialize
-        // ====================================
-        async function init() {
-            // Check if already logged in (localStorage)
-            const loggedIn = localStorage.getItem('rice_stock_logged_in');
-            if (loggedIn === 'true') {
-                showDashboard();
-            }
-        }
+        // Load data on start
+        loadData();
 
-        // ====================================
-        // Auth Functions
-        // ====================================
-        function handleLogin(event) {
-            event.preventDefault();
-            
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-
-            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-                localStorage.setItem('rice_stock_logged_in', 'true');
-                showAlert('authAlert', '✅ Login successful! Loading dashboard...', 'success');
-                setTimeout(() => {
-                    showDashboard();
-                }, 1000);
-            } else {
-                showAlert('authAlert', '❌ Invalid credentials. Please try: admin123 / 123', 'error');
-            }
-        }
-
-        function handleLogout() {
-            localStorage.removeItem('rice_stock_logged_in');
-            currentUser = null;
-            document.getElementById('dashboardScreen').style.display = 'none';
-            document.getElementById('authScreen').style.display = 'flex';
-            showAlert('authAlert', '👋 Logged out successfully', 'success');
-        }
-
-        function showDashboard() {
-            document.getElementById('authScreen').style.display = 'none';
-            document.getElementById('dashboardScreen').style.display = 'block';
-            loadDashboardData();
-        }
-
-        // ====================================
-        // Dashboard Functions
-        // ====================================
-        async function loadDashboardData() {
-            await Promise.all([
-                loadKPIs(),
-                loadProducts(),
-                loadTransactions()
-            ]);
+        async function loadData() {
+            await Promise.all([loadKPIs(), loadProducts(), loadTransactions()]);
         }
 
         async function loadKPIs() {
             try {
-                const { data, error } = await supabase.rpc('get_dashboard_kpis', {
-                    p_org_id: currentOrgId
-                });
-
-                if (!error && data) {
+                const { data } = await supabase.rpc('get_dashboard_kpis', { p_org_id: ORG_ID });
+                if (data) {
                     document.getElementById('totalStock').textContent = `${parseFloat(data.total_stock_kg || 0).toFixed(2)} kg`;
                     document.getElementById('productCount').textContent = data.sku_count || 0;
                     document.getElementById('lowStockCount').textContent = data.low_stock_count || 0;
                     document.getElementById('sales7d').textContent = `${parseFloat(data.sales_7d_kg || 0).toFixed(2)} kg`;
                 }
             } catch (err) {
-                console.error('Error loading KPIs:', err);
+                console.error('KPI error:', err);
             }
         }
 
         async function loadProducts() {
             try {
-                const { data, error } = await supabase
+                const { data } = await supabase
                     .from('inventory_on_hand')
                     .select('*')
-                    .eq('org_id', currentOrgId)
+                    .eq('org_id', ORG_ID)
                     .order('sku');
 
-                if (!error && data) {
-                    allProducts = data;
-                    displayProducts(data);
-                } else {
-                    console.error('Error loading products:', error);
-                    document.getElementById('productsTable').innerHTML = 
-                        '<tr><td colspan="6" class="empty-state"><div class="empty-state-icon">📦</div><p>No products found. Add your first product!</p></td></tr>';
-                }
+                allProducts = data || [];
+                displayProducts(allProducts);
             } catch (err) {
-                console.error('Error loading products:', err);
+                console.error('Products error:', err);
             }
         }
 
         function displayProducts(products) {
             const tbody = document.getElementById('productsTable');
-            
             if (products.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" class="empty-state"><div class="empty-state-icon">📦</div><p>No products yet. Add your first product!</p></td></tr>';
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No products. Add one!</td></tr>';
                 return;
             }
 
             tbody.innerHTML = products.map(p => {
-                const status = getStockStatus(p);
-                return `
-                    <tr>
-                        <td><strong>${p.sku}</strong></td>
-                        <td>
-                            ${p.name}
-                            ${p.name_th ? `<br><small style="color: #666;">${p.name_th}</small>` : ''}
-                        </td>
-                        <td>${parseFloat(p.pack_size_kg).toFixed(2)}</td>
-                        <td><strong>${parseFloat(p.on_hand_kg).toFixed(2)}</strong></td>
-                        <td><span class="badge badge-${status.class}">${status.label}</span></td>
-                        <td>
-                            <div class="action-buttons">
-                                <button class="btn btn-secondary btn-small" onclick="quickTransaction('${p.product_id}', 'IN')">📥 IN</button>
-                                <button class="btn btn-primary btn-small" onclick="quickTransaction('${p.product_id}', 'OUT')" ${p.on_hand_kg === 0 ? 'disabled' : ''}>📤 OUT</button>
-                                <button class="btn btn-outline btn-small" onclick="quickTransaction('${p.product_id}', 'ADJUST')">⚖️ ADJ</button>
-                            </div>
-                        </td>
-                    </tr>
-                `;
+                const status = p.on_hand_kg === 0 ? { label: '❌ OUT', class: 'out' } :
+                              (p.reorder_point_kg > 0 && p.on_hand_kg < p.reorder_point_kg) ? { label: '⚠️ LOW', class: 'low' } :
+                              { label: '✅ OK', class: 'ok' };
+                
+                return `<tr>
+                    <td><strong>${p.sku}</strong></td>
+                    <td>${p.name}</td>
+                    <td>${parseFloat(p.pack_size_kg).toFixed(2)}</td>
+                    <td><strong>${parseFloat(p.on_hand_kg).toFixed(2)}</strong></td>
+                    <td><span class="badge badge-${status.class}">${status.label}</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-secondary btn-small" onclick="quickTxn('${p.product_id}','IN')">IN</button>
+                            <button class="btn btn-primary btn-small" onclick="quickTxn('${p.product_id}','OUT')" ${p.on_hand_kg === 0 ? 'disabled' : ''}>OUT</button>
+                        </div>
+                    </td>
+                </tr>`;
             }).join('');
-        }
-
-        function getStockStatus(product) {
-            if (product.on_hand_kg === 0) {
-                return { label: '❌ OUT', class: 'out' };
-            }
-            if (product.reorder_point_kg > 0 && product.on_hand_kg < product.reorder_point_kg) {
-                return { label: '⚠️ LOW', class: 'low' };
-            }
-            return { label: '✅ OK', class: 'ok' };
         }
 
         function filterProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const filtered = allProducts.filter(p => 
-                p.sku.toLowerCase().includes(query) ||
-                p.name.toLowerCase().includes(query) ||
-                (p.name_th && p.name_th.toLowerCase().includes(query)) ||
-                (p.barcode && p.barcode.toLowerCase().includes(query))
+                p.sku.toLowerCase().includes(query) || p.name.toLowerCase().includes(query)
             );
             displayProducts(filtered);
         }
 
-        async function loadTransactions() {
-            try {
-                const { data, error } = await supabase
-                    .from('inventory_txn')
-                    .select(`
-                        *,
-                        products (sku, name)
-                    `)
-                    .eq('org_id', currentOrgId)
-                    .order('created_at', { ascending: false })
-                    .limit(100);
-
-                if (!error && data) {
-                    displayTransactions(data);
-                }
-            } catch (err) {
-                console.error('Error loading transactions:', err);
-            }
-        }
-
-        function displayTransactions(txns) {
-            const tbody = document.getElementById('transactionsTable');
-            
-            if (txns.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No transactions yet</td></tr>';
-                return;
-            }
-
-            tbody.innerHTML = txns.map(t => {
-                const date = new Date(t.created_at);
-                const icon = t.type === 'IN' ? '📥' : t.type === 'OUT' ? '📤' : '⚖️';
-                return `
-                    <tr>
-                        <td>${date.toLocaleDateString()} ${date.toLocaleTimeString()}</td>
-                        <td><span class="badge badge-${t.type.toLowerCase()}">${icon} ${t.type}</span></td>
-                        <td>
-                            ${t.products?.name || 'Unknown'}
-                            <br><small style="color: #666;">${t.products?.sku || ''}</small>
-                        </td>
-                        <td><strong>${parseFloat(t.qty_kg).toFixed(2)}</strong></td>
-                        <td>${t.ref || '-'}</td>
-                        <td>${t.note || '-'}</td>
-                    </tr>
-                `;
-            }).join('');
-        }
-
-        // ====================================
-        // Product Functions
-        // ====================================
         async function handleAddProduct(event) {
             event.preventDefault();
-
-            const product = {
-                org_id: currentOrgId,
-                sku: document.getElementById('productSKU').value.trim(),
-                name: document.getElementById('productName').value.trim(),
-                name_th: document.getElementById('productNameTH').value.trim() || null,
-                category: document.getElementById('productCategory').value,
-                pack_size_kg: parseFloat(document.getElementById('productPackSize').value),
-                barcode: document.getElementById('productBarcode').value.trim() || null,
-                reorder_point_kg: parseFloat(document.getElementById('productReorder').value) || 0,
-            };
-
             try {
-                const { data, error } = await supabase
-                    .from('products')
-                    .insert(product)
-                    .select();
+                const { data, error } = await supabase.from('products').insert({
+                    org_id: ORG_ID,
+                    sku: document.getElementById('productSKU').value.trim(),
+                    name: document.getElementById('productName').value.trim(),
+                    category: document.getElementById('productCategory').value,
+                    pack_size_kg: parseFloat(document.getElementById('productPackSize').value),
+                    reorder_point_kg: 0
+                }).select();
 
-                if (error) {
-                    if (error.message.includes('duplicate') || error.code === '23505') {
-                        showAlert('dashboardAlert', '❌ SKU already exists! Please use a different SKU.', 'error');
-                    } else {
-                        showAlert('dashboardAlert', `❌ Error: ${error.message}`, 'error');
-                    }
-                } else {
-                    showAlert('dashboardAlert', '✅ Product added successfully!', 'success');
-                    document.getElementById('productForm').reset();
-                    await loadProducts();
-                    await loadKPIs();
-                    // Switch to overview tab
-                    switchTab('overview');
-                }
+                if (error) throw error;
+                showAlert('✅ Product added!', 'success');
+                document.getElementById('productForm').reset();
+                await loadData();
+                switchTab('overview');
             } catch (err) {
-                showAlert('dashboardAlert', `❌ Error: ${err.message}`, 'error');
+                showAlert('❌ ' + err.message, 'error');
             }
         }
 
@@ -1088,282 +692,156 @@
             document.getElementById('productPackSize').value = size;
         }
 
-        // ====================================
-        // Transaction Functions
-        // ====================================
         function showTransactionModal() {
             loadProductsDropdown();
             document.getElementById('transactionModal').classList.add('active');
         }
 
-        function closeTransactionModal() {
+        function closeModal() {
             document.getElementById('transactionModal').classList.remove('active');
             document.getElementById('transactionForm').reset();
         }
 
-        function quickTransaction(productId, type) {
-            loadProductsDropdown(productId);
+        function quickTxn(id, type) {
+            loadProductsDropdown(id);
             document.getElementById('txnType').value = type;
-            updateTxnForm();
-            document.getElementById('transactionModal').classList.add('active');
+            showTransactionModal();
         }
 
         function loadProductsDropdown(selectedId = null) {
             const select = document.getElementById('txnProduct');
-            select.innerHTML = '<option value="">Select product...</option>' + 
+            select.innerHTML = '<option value="">Select...</option>' + 
                 allProducts.map(p => 
-                    `<option value="${p.product_id}" data-pack="${p.pack_size_kg}" data-stock="${p.on_hand_kg}" ${p.product_id === selectedId ? 'selected' : ''}>
-                        ${p.sku} - ${p.name} (${parseFloat(p.on_hand_kg).toFixed(2)} kg available)
+                    `<option value="${p.product_id}" data-pack="${p.pack_size_kg}" ${p.product_id === selectedId ? 'selected' : ''}>
+                        ${p.sku} - ${p.name}
                     </option>`
                 ).join('');
-            
-            if (selectedId) {
-                select.value = selectedId;
-                updateBagsHelper();
-            }
         }
 
-        function updateTxnForm() {
-            const type = document.getElementById('txnType').value;
-            const icon = type === 'IN' ? '📥' : type === 'OUT' ? '📤' : '⚖️';
-            const label = type === 'IN' ? 'Stock IN (Receive)' :
-                         type === 'OUT' ? 'Stock OUT (Sale)' :
-                         'Adjustment';
-            document.getElementById('modalTitle').textContent = `${icon} ${label}`;
-        }
-
-        function updateBagsHelper() {
+        function updateHelper() {
             const select = document.getElementById('txnProduct');
             const option = select.options[select.selectedIndex];
-            const packSize = parseFloat(option.dataset.pack || 0);
+            const pack = parseFloat(option.dataset.pack || 0);
             const qty = parseFloat(document.getElementById('txnQty').value || 0);
             
-            if (packSize > 0 && qty > 0) {
-                const bags = (qty / packSize).toFixed(2);
-                document.getElementById('bagsHelper').textContent = 
-                    `≈ ${bags} bags × ${packSize} kg each`;
-            } else if (packSize > 0) {
-                document.getElementById('bagsHelper').textContent = 
-                    `Pack size: ${packSize} kg per bag`;
+            if (pack > 0 && qty > 0) {
+                document.getElementById('helper').textContent = `≈ ${(qty / pack).toFixed(2)} bags × ${pack} kg`;
             } else {
-                document.getElementById('bagsHelper').textContent = 'Enter quantity above';
+                document.getElementById('helper').textContent = 'Enter quantity';
             }
         }
 
         async function handleTransaction(event) {
             event.preventDefault();
-
-            const txnData = {
-                p_org_id: currentOrgId,
-                p_product_id: document.getElementById('txnProduct').value,
-                p_type: document.getElementById('txnType').value,
-                p_qty_kg: parseFloat(document.getElementById('txnQty').value),
-                p_ref: document.getElementById('txnRef').value.trim() || null,
-                p_note: document.getElementById('txnNote').value.trim() || null
-            };
-
             try {
-                const { data, error } = await supabase.rpc('create_transaction', txnData);
+                const { data, error } = await supabase.rpc('create_transaction', {
+                    p_org_id: ORG_ID,
+                    p_product_id: document.getElementById('txnProduct').value,
+                    p_type: document.getElementById('txnType').value,
+                    p_qty_kg: parseFloat(document.getElementById('txnQty').value),
+                    p_ref: document.getElementById('txnRef').value.trim() || null,
+                    p_note: null
+                });
 
-                if (error) {
-                    showAlert('dashboardAlert', `❌ Error: ${error.message}`, 'error');
-                } else if (data && !data.success) {
-                    showAlert('dashboardAlert', `❌ ${data.error}`, 'error');
-                } else {
-                    const icon = txnData.p_type === 'IN' ? '📥' : txnData.p_type === 'OUT' ? '📤' : '⚖️';
-                    showAlert('dashboardAlert', `✅ ${icon} Transaction completed successfully!`, 'success');
-                    closeTransactionModal();
-                    await loadDashboardData();
-                }
+                if (error) throw error;
+                if (data && !data.success) throw new Error(data.error);
+
+                showAlert('✅ Transaction completed!', 'success');
+                closeModal();
+                await loadData();
             } catch (err) {
-                showAlert('dashboardAlert', `❌ Error: ${err.message}`, 'error');
+                showAlert('❌ ' + err.message, 'error');
             }
         }
 
-        // ====================================
-        // Sales Analytics
-        // ====================================
-        async function loadSalesChart() {
+        async function loadTransactions() {
             try {
-                const { data, error } = await supabase
+                const { data } = await supabase
                     .from('inventory_txn')
-                    .select('created_at, qty_kg')
-                    .eq('org_id', currentOrgId)
-                    .eq('type', 'OUT')
-                    .gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString())
-                    .order('created_at');
+                    .select('*, products(sku, name)')
+                    .eq('org_id', ORG_ID)
+                    .order('created_at', { ascending: false })
+                    .limit(50);
 
-                if (error || !data) {
-                    console.error('Error loading sales:', error);
+                const tbody = document.getElementById('transactionsTable');
+                if (!data || data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No transactions</td></tr>';
                     return;
                 }
 
-                // Group by date
-                const salesByDate = {};
+                tbody.innerHTML = data.map(t => `<tr>
+                    <td>${new Date(t.created_at).toLocaleString()}</td>
+                    <td>${t.type}</td>
+                    <td>${t.products?.name || 'Unknown'}</td>
+                    <td><strong>${parseFloat(t.qty_kg).toFixed(2)}</strong></td>
+                    <td>${t.ref || '-'}</td>
+                </tr>`).join('');
+            } catch (err) {
+                console.error('Txn error:', err);
+            }
+        }
+
+        async function loadSales() {
+            try {
+                const { data } = await supabase
+                    .from('inventory_txn')
+                    .select('created_at, qty_kg')
+                    .eq('org_id', ORG_ID)
+                    .eq('type', 'OUT')
+                    .gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString());
+
+                if (!data) return;
+
+                const byDate = {};
                 data.forEach(t => {
                     const date = new Date(t.created_at).toLocaleDateString();
-                    salesByDate[date] = (salesByDate[date] || 0) + parseFloat(t.qty_kg);
+                    byDate[date] = (byDate[date] || 0) + parseFloat(t.qty_kg);
                 });
 
-                const dates = Object.keys(salesByDate);
-                const values = Object.values(salesByDate);
-
                 const ctx = document.getElementById('salesChart');
-                if (salesChart) {
-                    salesChart.destroy();
-                }
+                if (chart) chart.destroy();
 
-                salesChart = new Chart(ctx, {
+                chart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: dates,
+                        labels: Object.keys(byDate),
                         datasets: [{
                             label: 'Sales (kg)',
-                            data: values,
+                            data: Object.values(byDate),
                             borderColor: '#D4A574',
                             backgroundColor: 'rgba(212, 165, 116, 0.1)',
                             tension: 0.4,
-                            fill: true,
-                            borderWidth: 2
+                            fill: true
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.parsed.y.toFixed(2) + ' kg';
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    callback: function(value) {
-                                        return value + ' kg';
-                                    }
-                                }
-                            }
-                        }
+                        plugins: { legend: { display: false } },
+                        scales: { y: { beginAtZero: true } }
                     }
                 });
-
-                await loadTopProducts();
             } catch (err) {
-                console.error('Error loading sales chart:', err);
+                console.error('Sales error:', err);
             }
         }
 
-        async function loadTopProducts() {
-            try {
-                const { data, error } = await supabase
-                    .from('inventory_txn')
-                    .select(`
-                        qty_kg,
-                        products (sku, name)
-                    `)
-                    .eq('org_id', currentOrgId)
-                    .eq('type', 'OUT')
-                    .gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString());
-
-                if (error || !data) return;
-
-                // Group by product
-                const salesByProduct = {};
-                data.forEach(t => {
-                    if (t.products) {
-                        const key = t.products.sku;
-                        if (!salesByProduct[key]) {
-                            salesByProduct[key] = {
-                                sku: t.products.sku,
-                                name: t.products.name,
-                                total: 0
-                            };
-                        }
-                        salesByProduct[key].total += parseFloat(t.qty_kg);
-                    }
-                });
-
-                // Sort and get top 10
-                const topProducts = Object.values(salesByProduct)
-                    .sort((a, b) => b.total - a.total)
-                    .slice(0, 10);
-
-                const tbody = document.getElementById('topProductsTable');
-                
-                if (topProducts.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No sales data available</td></tr>';
-                    return;
-                }
-
-                tbody.innerHTML = topProducts.map((p, i) => {
-                    const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i + 1}`;
-                    return `
-                        <tr>
-                            <td><strong>${medal}</strong></td>
-                            <td>${p.sku}</td>
-                            <td>${p.name}</td>
-                            <td><strong>${p.total.toFixed(2)}</strong></td>
-                        </tr>
-                    `;
-                }).join('');
-            } catch (err) {
-                console.error('Error loading top products:', err);
-            }
-        }
-
-        // ====================================
-        // Tab Navigation
-        // ====================================
-        function switchTab(tabName) {
-            // Update tab buttons
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
+        function switchTab(name) {
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
             event.target.classList.add('active');
-
-            // Update tab content
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(tabName + 'Tab').classList.add('active');
-
-            // Load data if needed
-            if (tabName === 'sales') {
-                loadSalesChart();
-            } else if (tabName === 'transactions') {
-                loadTransactions();
-            } else if (tabName === 'overview') {
-                loadDashboardData();
-            }
-        }
-
-        // ====================================
-        // Utilities
-        // ====================================
-        function showAlert(elementId, message, type) {
-            const alert = document.getElementById(elementId);
-            alert.className = `alert alert-${type} active`;
-            alert.textContent = message;
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(name + 'Tab').classList.add('active');
             
-            setTimeout(() => {
-                hideAlert(elementId);
-            }, 5000);
+            if (name === 'sales') loadSales();
+            if (name === 'transactions') loadTransactions();
         }
 
-        function hideAlert(elementId) {
-            document.getElementById(elementId).classList.remove('active');
+        function showAlert(msg, type) {
+            const alert = document.getElementById('dashboardAlert');
+            alert.className = `alert alert-${type} active`;
+            alert.textContent = msg;
+            setTimeout(() => alert.classList.remove('active'), 5000);
         }
-
-        // Initialize app
-        init();
     </script>
 </body>
 </html>
